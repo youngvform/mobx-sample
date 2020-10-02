@@ -1,13 +1,12 @@
-import { useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { storeContext } from './context';
 import { useRootData } from './hook';
 
 export const CityView: React.FC<{ cities: string[] }> = ({ cities }) => {
   return (
     <ul>
       {cities.map((city) => (
-        <li>{city}</li>
+        <li key={city}>{city}</li>
       ))}
     </ul>
   );
@@ -20,8 +19,8 @@ export const CityView: React.FC<{ cities: string[] }> = ({ cities }) => {
 //   });
 // };
 
-export const CityList = () => {
+export const CityList = observer(() => {
   const cities = useRootData((store) => store.filteredCities);
   return <CityView cities={cities} />;
-};
+});
 export default CityList;

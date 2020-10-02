@@ -6,7 +6,7 @@ export const createStore = () => {
   const store = {
     query: observable.box(''),
     setQuery(query: string) {
-      store.query.set(query.toLowerCase());
+      this.query.set(query.toLowerCase());
     },
     get filteredCities() {
       return Cities.filter((city) =>
